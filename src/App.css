@@ -18,18 +18,18 @@ background-size: cover;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 25%;
+  
 backdrop-filter: blur(4px);
 padding: 20px;
-border-radius: 10px;
+border-radius: 20px;
 box-shadow: -6px 14px 17px 16px #0000004f;
-border: 1px solid rgba(255, 255, 255, 0.534);
+border: 1px solid #a554ba;
 }
 
 input.searchinput{
   outline: none;
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid #a554ba;
   line-height: 2.5;
   padding: 0px 20px;
   border-radius: 50px;
@@ -38,7 +38,7 @@ input.searchinput{
 backdrop-filter: blur(30px);
 }
 input.searchinput::placeholder{
-color: white;
+color: rgba(255, 255, 255, 0.61);
 letter-spacing: 1px;
 }
 .weather_icon{
@@ -49,4 +49,63 @@ width: 190px;
 
 .climate h3{
 font-size: 40px;
+}
+
+.climate p{
+text-transform: capitalize;
+}
+
+.stats .icon{
+  height: 50px;
+  width: 50px;
+}
+
+.stats .icons{
+  font-size: 30px;
+  color: white;
+}
+
+.temp_min{
+  background: url('assets/img/modes/temp-min.png') no-repeat center/cover;
+}
+
+.temp_max{
+  background: url('assets/img/modes/temp-max.png') no-repeat center/cover;
+}
+
+.humidity{
+  background: url('assets/img/modes/humidity.png') no-repeat center/cover;
+}
+
+.wind{
+  background: url('assets/img/modes/wind.png') no-repeat center/cover;
+}
+
+.stats p{
+font-size: 12px;
+margin: 0px;
+}
+
+.border-bottom{
+border-bottom: 1px solid gray;
+}
+
+.loc{
+border: 1px solid white;
+border-radius: 50px;
+width: max-content;
+padding: 5px 8px;
+}
+
+.loc .icon{
+  color: white;
+  font-size: 15px;
+}
+
+.loc h5{
+  margin: 0px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: white;
 }

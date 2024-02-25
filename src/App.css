@@ -1,0 +1,52 @@
+h5, h3, p, span{
+  color: white;
+}
+
+.weather_body{
+  background-image: url('assets/img/wetherbg.jpg');
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+top: 0px;
+left: 0px;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.weather-app{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+backdrop-filter: blur(4px);
+padding: 20px;
+border-radius: 10px;
+box-shadow: -6px 14px 17px 16px #0000004f;
+border: 1px solid rgba(255, 255, 255, 0.534);
+}
+
+input.searchinput{
+  outline: none;
+  width: 100%;
+  border: 1px solid white;
+  line-height: 2.5;
+  padding: 0px 20px;
+  border-radius: 50px;
+  color: white;
+  background-color: transparent;
+backdrop-filter: blur(30px);
+}
+input.searchinput::placeholder{
+color: white;
+letter-spacing: 1px;
+}
+.weather_icon{
+  background: url('assets/img/weather/summer.png') no-repeat center/contain;
+  height: 150px;
+width: 190px;
+}
+
+.climate h3{
+font-size: 40px;
+}

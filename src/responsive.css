@@ -1,18 +1,49 @@
 @media only screen and (max-width:600px){
 .weather-app{
 width: 90%;
+height: 90%; 
+
+}
+
+.prompt-field{
+    line-height: 3;
+    width: 100%;
+  
+}
+
+.model-center{
+    width: 90%;
 }
 }
 
 @media only screen and (min-width:768px){
 .weather-app{
-width: 40%;   
+width: 40%;  
 } 
+
+.prompt-field{
+    line-height: 3;
+   width: 100%;
+}
+
+.model-center{
+    width: 40%;
+}
 }
 
 
 @media only screen and (min-width:998px){
 .weather-app{
 width: 28%; 
+}
+
+.prompt-field{
+    line-height: 3;
+    width: 100%;
+
+}
+
+.model-center{
+    width: 40%;
 }
 }

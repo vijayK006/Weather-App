@@ -1,5 +1,18 @@
-h5, h3, p, span{
+h5, h4, h3, p, span{
   color: white;
+}
+
+h2, h3, h4, h5, h6, span{
+  font-family: "Sarpanch", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p, input, button{
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .weather_body{
@@ -105,7 +118,71 @@ padding: 5px 8px;
 .loc h5{
   margin: 0px;
   font-size: 13px;
-  font-weight: 300;
+
   letter-spacing: 1px;
+  color: white;
+}
+
+.model-body{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(30px);
+transform: scale(1);
+transition: all 0.5s ease-in-out;
+opacity: 1;
+}
+
+.close{
+ transform: scale(0); 
+ opacity: 0;
+}
+.model-center{
+  position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+
+}
+
+input.prompt-field{
+background-color: transparent;
+border: none;
+border-bottom: 2px solid white;
+padding: 0px 20px;
+outline: none;
+color: white;
+}
+
+.prompt-field::placeholder{
+  color: white;
+}
+
+.btn-name{
+  margin-top: 10px;
+  border: none;
+  background-color: none;
+  color: black;
+  border-radius: 0px;
+  width: 100%;
+  line-height: 2.5;
+  letter-spacing: 2px;
+font-weight: 500;
+}
+
+.search{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -5px;
+  padding-left: 30px;
+}
+
+.search .icon{
+  font-size: 40px;
   color: white;
 }

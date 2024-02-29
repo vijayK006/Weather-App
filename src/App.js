@@ -5,7 +5,7 @@ import { IoSearchCircleSharp } from "react-icons/io5";
 
 
 function App() {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('bengaluru');
   const [cityname, setCityname] = useState('');
   const [weather, setWeather] = useState('');
   const [weatherDecrip, setWeatherDecrip] = useState('');
@@ -15,9 +15,11 @@ function App() {
   const [windspeed, setWindspeed] = useState('');
   const [country, setCountry] = useState('');
   const [cityNotFound, setCityNotFound] = useState(false);
-  
   const [greeting, setGreeting] = useState('');
-  const [currentTime, setCurrentTime] = useState('');
+  const [timezone, setTimezone] = useState('');
+
+
+  const [localTime, setLocalTime] = useState('');
   useEffect(() => {
     const trimmedCity = city.trim();
     if (trimmedCity === '') {
@@ -34,6 +36,8 @@ function App() {
       return; // Stop further execution
     }
 
+    
+
     axios(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=75acef0b705e673e7c6d7c47d0716bf8&units=metric`)
       .then(result => {
         console.log(result.data)
@@ -43,9 +47,12 @@ function App() {
         setTempMax(result.data.main.temp_max);
         setHumidity(result.data.main.humidity);
         setWeather(result.data.main.temp);
+       
         setWindspeed(result.data.wind.speed);
         setWeatherDecrip(result.data.weather[0].description);
         setCountry(result.data.sys.country);
+
+    
 setCityNotFound(false);
       })
       .catch(err =>{
@@ -54,6 +61,33 @@ setCityNotFound(false);
       });
   }, [city])
 
+
+
+  useEffect(() => {
+   // replace 'your_city_here' with the actual city
+    const apiKey = 'EeyJRQpqGBnXUUvUCgAgBg==xe1WB6E1LGsIryN3';
+    
+    axios.get(`https://api.api-ninjas.com/v1/worldtime?city=${city}`, {
+      headers: {
+        'X-Api-Key': apiKey,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      const utcTime = response.data.datetime;
+      const hours = response.data.hour;
+      const options = { hour12: true, hour: 'numeric', minute: 'numeric' };
+      const localDateTime = new Date(utcTime).toLocaleString('en-US', options);
+      setLocalTime(localDateTime);
+      setTimezone(hours)
+      // console.log(localDateTime); localtime data
+
+      console.log(response.data); //international timezone
+    })
+    .catch(error => {
+      console.error('Error: ', error);
+    });
+  }, [city]);
 
   const getuser = ()=>{
     const uname = document.getElementById('username').value;
@@ -70,7 +104,6 @@ document.getElementById('nameUser').innerHTML= uname;
   }
 
 
-
   const findcity =()=>{
     const cityname = document.getElementById('cityname').value;
 setCity(cityname);
@@ -85,44 +118,34 @@ if(cityname === ''){
 
   }
 
-
-  // useEffect(() => {
-  //   const date = new Date();
-  //   const h = date.getHours();
-
-  //   if (h >= 0 && h < 12) {
-  //     setGreeting('Good Morning!');
-  //   } else if (h >= 12 && h < 17) {
-  //     setGreeting('Good Afternoon!');
-  //   } else if (h >= 17 && h < 19) {
-  //     setGreeting('Good Evening!');
-  //   } else {
-  //     setGreeting('Good Night!');
-  //   }
-  // }, []);
-
-  
   useEffect(() => {
-    const timer = setInterval(() => {
-      const currentDate = new Date();
-      const currentTimeString = currentDate.toLocaleTimeString();
-      setCurrentTime(currentTimeString);
+    if (timezone >= '00' && timezone < '12') {
+      setGreeting('Good Morning!');
+      document.getElementById('weathericon').classList.add('weather_morning');
+      document.getElementById('weathericon').classList.remove('weather_afternoon');
+  document.getElementById('weathericon').classList.remove('weather_evening');
+ document.getElementById('weathericon').classList.remove('weather_night');
+    } else if (timezone >= '12' && timezone < '18') {
+      setGreeting('Good Afternoon!');
+      document.getElementById('weathericon').classList.remove('weather_morning');
+      document.getElementById('weathericon').classList.add('weather_afternoon');
+  document.getElementById('weathericon').classList.remove('weather_evening');
+ document.getElementById('weathericon').classList.remove('weather_night');
 
-      const h = currentDate.getHours();
-
-      if (h >= 0 && h < 12) {
-        setGreeting('Good Morning!');
-      } else if (h >= 12 && h < 17) {
-        setGreeting('Good Afternoon!');
-      } else if (h >= 17 && h < 19) {
-        setGreeting('Good Evening!');
-      } else {
-        setGreeting('Good Night!');
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+    } else if (timezone >= '18' && timezone < '20') {
+      setGreeting('Good Evening!');
+      document.getElementById('weathericon').classList.remove('weather_morning');
+      document.getElementById('weathericon').classList.remove('weather_afternoon');
+  document.getElementById('weathericon').classList.add('weather_evening');
+ document.getElementById('weathericon').classList.remove('weather_night');
+    } else {
+      setGreeting('Good Night!');
+      document.getElementById('weathericon').classList.remove('weather_morning');
+      document.getElementById('weathericon').classList.remove('weather_afternoon');
+  document.getElementById('weathericon').classList.remove('weather_evening');
+ document.getElementById('weathericon').classList.add('weather_night');
+    }
+  }, [timezone]);
 
   return (
     <>
@@ -130,7 +153,7 @@ if(cityname === ''){
 
       <div className='weather_body'>
 
-        <div className='weather-app '>
+        <div className='weather-app'>
         <div className='position-relative'>
            <input type="text" placeholder='Type city name '
             className='searchinput'  id='cityname' />
@@ -143,10 +166,11 @@ if(cityname === ''){
           <div className='d-flex justify-content-between py-4'>
             <div className='greet'>
               <span className='name'>Hi, <span id="nameUser"></span> </span>
-              <h4>{greeting}</h4>
+              <h4>{greeting}  </h4>
             </div>
+
             <div className='time'>
-              <h5>{currentTime}</h5>
+              <h5>{localTime}</h5>
             </div>
 
           </div>
@@ -227,8 +251,7 @@ if(cityname === ''){
 <div className='model-body' id='userdetails'>
 <div className='model-center'>
 <h3 className='text-center pb-md-1 pb-3'>Explore Weather Updates from All Cities Worldwide!</h3>
-<p className='text-center pb-4'>Welcome to my website, your ultimate destination for comprehensive 
-weather reports from every city of the globe. </p>
+<p className='text-center pb-4'>Welcome to my website, Stay Updated Anywhere, Know the Time and Weather of Every City Worldwide! </p>
   <input type='text' placeholder='Please Enter Your Name' id="username" className='prompt-field'/>
 <br/>
 

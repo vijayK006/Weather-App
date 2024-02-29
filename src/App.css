@@ -54,14 +54,32 @@ input.searchinput::placeholder{
 color: rgba(255, 255, 255, 0.61);
 letter-spacing: 1px;
 }
+
 .weather_icon{
-  background: url('assets/img/weather/summer.png') no-repeat center/contain;
   height: 150px;
 width: 190px;
 }
 
+.weather_morning{
+  background: url('assets/img/weather/morning.png') no-repeat center/contain;
+}
+
+.weather_afternoon{
+  background: url('assets/img/weather/afternoon.png') no-repeat center/contain;
+}
+
+.weather_evening{
+  background: url('assets/img/weather/evening.png') no-repeat center/contain;
+}
+
+.weather_night{
+  background: url('assets/img/weather/night.png') no-repeat center/contain;
+}
+
 .climate h3{
-font-size: 40px;
+  font-size: 40px;
+  -webkit-text-stroke: 1px white;
+  color: transparent;
 }
 
 .climate p{

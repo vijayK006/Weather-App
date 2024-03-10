@@ -61,19 +61,19 @@ width: 190px;
 }
 
 .weather_morning{
-  background: url('assets/img/weather/morning.png') no-repeat center/contain;
+  background: url('assets/img/weather/morning.avif') no-repeat center/contain;
 }
 
 .weather_afternoon{
-  background: url('assets/img/weather/afternoon.png') no-repeat center/contain;
+  background: url('assets/img/weather/afternoon.avif') no-repeat center/contain;
 }
 
 .weather_evening{
-  background: url('assets/img/weather/evening.png') no-repeat center/contain;
+  background: url('assets/img/weather/evening.avif') no-repeat center/contain;
 }
 
 .weather_night{
-  background: url('assets/img/weather/night.png') no-repeat center/contain;
+  background: url('assets/img/weather/night.avif') no-repeat center/contain;
 }
 
 .climate h3{
@@ -97,11 +97,11 @@ text-transform: capitalize;
 }
 
 .temp_min{
-  background: url('assets/img/modes/temp-min.png') no-repeat center/cover;
+  background: url('assets/img/modes/temp-min.avif') no-repeat center/cover;
 }
 
 .temp_max{
-  background: url('assets/img/modes/temp-max.png') no-repeat center/cover;
+  background: url('assets/img/modes/temp-max.avif') no-repeat center/cover;
 }
 
 .humidity{
@@ -109,7 +109,7 @@ text-transform: capitalize;
 }
 
 .wind{
-  background: url('assets/img/modes/wind.png') no-repeat center/cover;
+  background: url('assets/img/modes/wind.avif') no-repeat center/cover;
 }
 
 .stats p{

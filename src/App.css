@@ -16,7 +16,7 @@ p, input, button{
 }
 
 .weather_body{
-  background-image: url('assets/img/wetherbg.jpg');
+  background-image: url('assets/img/wetherbg.avif');
   position: fixed;
   width: 100%;
   height: 100vh;
